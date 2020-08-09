@@ -1,0 +1,92 @@
+*,
+*::after,
+*::before{
+   box-sizing: border-box;
+}
+
+html{
+   scroll-behavior: smooth;
+}
+
+body {
+   margin: 0;
+   font-family: $ff-body;
+   font-size: $fs-base;
+}
+
+section{
+   position: relative;
+   padding: 1em 0;
+}
+
+h1{
+   font-size: 3em;
+   font-weight: bold;
+   text-align: center;
+}
+
+img{
+   width: 100%;
+   height: auto;
+   display: block;
+}
+
+
+p{
+   font-size: 1em;
+   line-height: 1;
+   letter-spacing: .1em;
+   margin: .4em 0;
+}
+
+ul{
+   padding: 0;
+   margin: 0;
+}
+
+li{
+   list-style: none;
+}
+
+a{
+   text-decoration: none;
+   font-size: 1.2em;
+   color: $txt-clr-dark;
+   text-transform: uppercase;
+   display: block;
+   padding: 1em;
+}
+
+.btn{
+   border-radius: 5%;
+   border: 1px solid $sec-clr;
+   background: $sec-clr;
+   color: $txt-clr-light;
+   font-size: .8em;
+   padding: .8em 2em;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   transition: all .8 ease-in;
+   cursor: pointer;
+   margin-top: .5em;
+
+   &:active{
+      transform: scale(.95);
+   }
+
+   &:focus{
+      outline: none;
+   }
+}
+
+.pulsate{
+   width: 70%;
+   font-size: 1.1em;
+   text-transform: uppercase;
+   background: rgba($sec-clr, .8);
+   padding: .7em 1em;
+   color: $main-clr;
+   animation: pulsate 3s ease-in-out infinite;
+   cursor: pointer;
+   z-index: 50;
+}

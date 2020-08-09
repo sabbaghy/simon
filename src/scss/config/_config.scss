@@ -1,0 +1,39 @@
+/* ===============  Colores para el sitio =============
+   https://paletasdecolores.com/paleta-de-colores-2594/
+   para los colores verdes en uso
+*/
+
+:root{
+   --main-clr: #caefb3;
+   --sec-clr: #abce00;
+   --txt-clr-dark: #2c2c2c;
+   --txt-clr-light: #f9f9f9;
+   --bg-clr-light:#F1EFE6;
+   --bg-clr-dark:#2c2c2c;
+   --cta-clr: #2f5f02;
+   --dgr-clr: #b33a46;
+}
+
+   $main-clr: var(--main-clr);
+   $sec-clr: var(--sec-clr);
+   $txt-clr-light: var(--txt-clr-light);
+   $txt-clr-dark: var(--txt-clr-dark);
+   $bg-clr-light: var(--bg-clr-light);
+   $bg-clr-dark: var(--bg-clr-dark);
+   $cta-clr: var(--cta-clr);
+   $dgr-clr: var(--dgr-clr);
+
+
+/* ===============  Fonts  =============*/
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&display=swap');
+
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:wght@400;700&effect=anaglyph|brick-sign|canvas-print|crackle|decaying|destruction|distressed|distressed-wood|emboss|fire|fire-animation|fragile|grass|ice|mitosis|neon|outline|putting-green|scuffed-steel|shadow-multiple|splintered|static|stonewash|3d|3d-float|vintage|wallpaper");
+
+$ff-title: 'Barlow Condensed', sans-serif; // ==>  para titulos y subtitulos de seccion
+$ff-title: 'Open Sans', cursive, sans-serif; // ==> para el resto de los textos
+$ff-body: 'Open Sans', cursive, sans-serif; // ==> para el resto de los textos
+$fw-reg: 400;
+$fw-bold: 700;
+$fs-base: 12px; // ==> tamaño base de texto para toda la aplicacion
