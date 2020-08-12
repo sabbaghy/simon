@@ -1,0 +1,53 @@
+.gameOver {
+   position: absolute;
+   z-index: 1000;
+   width: 60vw;
+   height: 50vh;
+   top: 20vh;
+   left: 20vw;
+   transform: translate(-50%);
+   transform: scale(0);
+   transition: all .5s ease-in-out;
+   background-color: rgba(47, 95, 2, .9);
+   border: 8px solid $sec-clr;
+   border-radius: 10px;
+   font-family: $ff-title;
+   color: $txt-clr-light;
+   font-size: 1.5rem;
+   letter-spacing: 2px;
+
+   &--show{
+      transform: scale(1);
+   }
+
+   @include phone {
+      font-size: 1rem;
+   }
+
+}
+
+.game-results{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+
+.btn--gameOver {
+   display: inline-block;
+   height: 50px;
+   width: 100px;
+   margin: 0 .5rem;
+   background-color: $sec-clr;
+   color: $txt-clr-light;
+   font-size: .8rem;
+   border: none;
+   border-radius: 6px;
+   cursor: pointer;
+   opacity: .6;
+
+   &:hover {
+      opacity: 1;
+   }
+}

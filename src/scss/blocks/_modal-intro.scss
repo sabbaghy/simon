@@ -1,0 +1,101 @@
+.intro {
+   position: absolute;
+   z-index: 1000;
+   width: 80vw;
+   height: 60vh;
+   top: 15vh;
+   left: 10vw;
+   transform: translate(-50%);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+   text-align: center;
+   transform: scale(0);
+   transition: all .5s ease-in-out;
+   background-color: rgba(0, 0, 0, .8);
+   border: 8px solid $sec-clr;
+   border-radius: 10px;
+
+   &--show{
+      transform: scale(1);
+   }
+
+}
+
+.form-play{
+   width: 90%;
+   color: $txt-clr-light;
+}
+
+.form-data{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.form-ctrl {
+   display: inline-flex;
+   align-items: center;
+   text-align: center;
+   margin: 0 .5rem;
+   color: $txt-clr-light;
+   font-size: 1rem;
+}
+.user-label{
+   width: 100%;
+   height: 1.5rem;
+}
+
+.user{
+   width: 100%;
+   height: 1.5rem;
+   background: $txt-clr-light;
+   outline: none;
+   border: none;
+}
+
+.btn--intro{
+   background: darkgreen;
+   border: darkgreen;
+   
+   &:hover{
+      background: lightgreen;
+      color: darkgreen;
+      font-weight: bold;
+   }
+}
+.hide {
+   display: none;
+}
+
+.block{
+   display:block;
+}
+
+
+
+.msg-errors {
+   // display: none;
+   font-size: 1.5em;
+   text-align: center;
+   margin: 1em 0;
+}
+
+.color {
+   font-family: $ff-title;
+   font-size: 2em;
+   &--green{
+      color: darkgreen;
+   }
+   &--red{
+      color: darkred;
+   }
+   &--gold{
+      color: goldenrod;
+   }
+   &--blue{
+      color: darkblue;
+   }
+   
+}

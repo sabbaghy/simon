@@ -7,14 +7,49 @@
 }
 
 .scores{
-   width: 100%;
+   width: 80%;
+   margin: 20px auto;
+   font-size: 1rem  ;
    display: flex;
-   justify-content: space-around;
-   align-items: center;
+   justify-content: space-between;
+   color: red;
+   font-family: courier;
+
+   transform: scale(0);
+
+   @include laptop {
+      width: 100%;
+      padding: 0 25px;
+      justify-content: space-between ;
+      position: absolute;
+      top: 60px;
+   }
+
+   &--show{
+      transform: scale(1);
+   }
+
+}
+
+.user-best,
+.best {
+   width: 180px;
+   padding: 1rem;
+   background: #330000; 
+   border-radius: 5px;
+   box-shadow:
+      0 0 0 2px darkgreen,
+      0 0 0 4px #fff,
+      0 0 0 6px darkred,
+      0 0 0 8px #fff,
+      0 0 0 10px goldenrod,
+      0 0 0 12px #fff,
+      0 0 0 14px darkblue;
    text-align: center;
-   font-family: $ff-title;
-   color: $txt-clr-dark;
-   font-size: 1.5em;
+   &-title{
+      font-size: 1rem;
+      font-weight: bold;
+   }
 }
 
 .start-btn {

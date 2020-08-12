@@ -37,12 +37,34 @@
 
    <!-- Main Section -->
    <section class="main" id="main">
-      <h1 class="main-title font-effect-shadow-multiple">Taguara Digital - Simon Says</h1>
 
-      <div class="scores">
-         <div class="scores__current" id="scores-current"> Current Score</div>
-         <div class=""> Current Score</div>
-         <div class="scores__best" id="scores-best"> Best Score</div>
+      <div class="intro intro--show" id="intro">
+         <h1 class="font-effect-shadow-multiple"><span class="color color--green">Taguara </span><span class="color color--red"> Digital</span></h1>
+         <h2 class="intro-title font-effect-shadow-multiple" ><span class="color color--gold">Simon </span><span class="color color--blue"> Say</span></h2>
+         
+         <form class="form-play" id="form-play">
+            <div class="form-data">
+               <div class="form-ctrl">
+                  <label class="user-label" for="user">User Name</label>
+                  <input class="user" type="text" id="user" placeholder="Intro your name">
+               </div>
+               <button class="btn btn--intro" id="btn-intro">Send</button>
+            </div>
+
+            <ul class="msg-errors" id="msg-errors"></ul>
+
+         </form>
+      </div>
+
+      <div class="gameOver" id="gameOver">
+         <div class ="game-results" id="gameResults">
+            <h2 class="gameOver-title" id="gameResultsText"></h2>
+            <h3 class="gameOver-subtitle" >Play again?</h3>
+            <div class="">
+               <button class="btn btn--gameOver" id="playAgain"> Yes </button>
+               <button class="btn btn--gameOver" id="leave"> No </button>
+            </div>
+         </div>
       </div>
 
       <div class="game-pad" id="outer-circle">
@@ -83,6 +105,19 @@
             </div>
          </div>
       </div>
+
+      <div class="scores" id="scores">
+         <div class="user-best">
+            <div class="user-best-title"> Your Best Scores</div>
+            <ul class="user-score" id="user-score"></ul>
+         </div>
+         <div class="best">
+            <div class="best-title"> Best Scores</div>
+            <ul class="best-score" id="best-score"></ul>
+         </div>
+      </div>
+
+
    </section>
    
    <!-- footer -->

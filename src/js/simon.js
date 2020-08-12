@@ -9,7 +9,7 @@ let on= false;
 let strict = false;
 let noise = true;
 let win;
-const numberOfLevels = 20;
+const numberOfLevels = 5;
 
 const turnCounter = document.getElementById('turn');
 const green = document.getElementById('green');
@@ -141,6 +141,7 @@ function winGame(){
    turnCounter.innerHTML = "WIN";
    on = false;
    win = true;
+   localStorage.setItem(`userScore-${userName}`, 'el score es 121')
 }
 
 strictBtn.addEventListener('click', (e) => {
