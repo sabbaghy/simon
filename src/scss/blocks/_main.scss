@@ -6,6 +6,17 @@
    padding: 3em 0;
 }
 
+.activePlayer{
+   position: absolute;
+   width: 100%;
+   justify-content: space-between ;
+   text-align: center;
+   color: red;
+   font-weight: bold;
+   // font-family: courier;
+   font-size: 1.5em;
+}
+
 .scores{
    width: 80%;
    margin: 20px auto;
@@ -14,6 +25,7 @@
    justify-content: space-between;
    color: red;
    font-family: courier;
+   z-index: -1;
 
    transform: scale(0);
 
@@ -22,7 +34,7 @@
       padding: 0 25px;
       justify-content: space-between ;
       position: absolute;
-      top: 60px;
+      top: 30px;
    }
 
    &--show{
@@ -56,6 +68,10 @@
    border-radius: 50%;
    font-size: 2em;
    background-color: lightgray;
+
+   &:active{
+      transform: scale(.95);
+   }
 }
 
 .led-score{
@@ -96,7 +112,7 @@
    }
 }
 
-.turn {
+.level {
    display: flex;
    align-items: center;
    justify-content: center;
@@ -157,6 +173,7 @@
    }
 
 }
+
 .green {
    border-radius: 100% 0 0 0;
    background: darkgreen;

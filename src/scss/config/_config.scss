@@ -12,6 +12,18 @@
    --bg-clr-dark:#2c2c2c;
    --cta-clr: #2f5f02;
    --dgr-clr: #b33a46;
+
+   --blueOn: #7baefe;
+   --blueOff: #2659a9;
+   --redOn: #fb7b7b;
+   --redOff: #d62626;
+   --yellowOn: #fff57b;
+   --yellowOff: #eec026;
+   --greenOn: #7bfb99;
+   --greenOff: #26b644;
+
+
+
 }
 
    $main-clr: var(--main-clr);
@@ -22,6 +34,7 @@
    $bg-clr-dark: var(--bg-clr-dark);
    $cta-clr: var(--cta-clr);
    $dgr-clr: var(--dgr-clr);
+
 
 
 /* ===============  Fonts  =============*/

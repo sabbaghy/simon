@@ -7,12 +7,6 @@
    <link rel="shortcut icon" href="assets/img/logos/favicon.png" type="image/x-icon">
    <link rel="stylesheet" href="css/styles.css">
    <title>Taguara Digital - Clock</title>
-   
-   <audio id="green-sound"><source src="assets/sounds/green.mp3"></source></audio>
-   <audio id="red-sound"><source src="assets/sounds/red.mp3"></source></audio>
-   <audio id="gold-sound"><source src="assets/sounds/gold.mp3"></source></audio>
-   <audio id="blue-sound"><source src="assets/sounds/blue.mp3"></source></audio>
-   
 </head>
 <body>
    <header class="header" id="header">
@@ -73,15 +67,16 @@
          <div class="pad gold" id="gold"></div>
          <div class="pad blue" id="blue"></div>
          <div class="inner-circle" id="inner-circle">
-            <div class="game-title" id="title" class="font-effect-emboss">SIMON!</div>
-            <div class="switches" id="switches">
 
+            <div class="game-title" id="title" class="font-effect-emboss">SIMON!</div>
+
+            <div class="switches" id="switches">
                <div class="mid">
                   <div class="btn-onOff">
                      <label class="rocker rocker-small">
                         <input type="checkbox" class="toggle" id="on-btn">
-                        <span class="switch-left">Yes</span>
-                        <span class="switch-right">No</span>
+                        <span class="switch-left">On</span>
+                        <span class="switch-right">Off</span>
                      </label>
                      <span class="label-switch">POWER</span>
                   </div>
@@ -99,25 +94,32 @@
 
                </div>
             </div>
+
             <div class="led-score">
-               <div class="turn" id="turn"></div>
+               <div class="level" id="level"></div>
                <div class="label-scores">COUNT</div>
             </div>
+
          </div>
       </div>
 
       <div class="scores" id="scores">
          <div class="user-best">
-            <div class="user-best-title"> Your Best Scores</div>
+            <div class="user-best-title" id="user-title"></div>
             <ul class="user-score" id="user-score"></ul>
          </div>
+         <div class="activePlayer" id="activePlayer">It is computer turn</div>
          <div class="best">
             <div class="best-title"> Best Scores</div>
             <ul class="best-score" id="best-score"></ul>
          </div>
       </div>
 
-
+      <audio id="green-sound"><source src="assets/sounds/green.mp3"></source></audio>
+      <audio id="red-sound"><source src="assets/sounds/red.mp3"></source></audio>
+      <audio id="gold-sound"><source src="assets/sounds/gold.mp3"></source></audio>
+      <audio id="blue-sound"><source src="assets/sounds/blue.mp3"></source></audio>
+      <audio id="error"><source src="assets/sounds/end.mp3"></source></audio>
    </section>
    
    <!-- footer -->

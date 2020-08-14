@@ -1,7 +1,7 @@
 let gameOrder = [];
 let playerOrder = [];
 let flash;
-let turn;
+let level;
 let good;
 let compTurn;
 let intervalId;
@@ -9,9 +9,9 @@ let on= false;
 let strict = false;
 let noise = true;
 let win;
-const numberOfLevels = 5;
+const numberOfLevels = 20;
 
-const turnCounter = document.getElementById('turn');
+const displayCounter = document.getElementById('level');
 const green = document.getElementById('green');
 const red = document.getElementById('red');
 const gold = document.getElementById('gold');
@@ -19,6 +19,7 @@ const blue = document.getElementById('blue');
 const onBtn = document.getElementById('on-btn');
 const startBtn = document.getElementById('start-btn');
 const strictBtn = document.getElementById('strict-btn');
+const activePlayer = document.getElementById('activePlayer');
 
 const colors = [
    {pad: green, normal: 'darkgreen', press: 'lightgreen', clip: 'green-sound'},
@@ -33,15 +34,13 @@ function play(){
    playerOrder = []
    flash = 0;
    intervalId = 0;
-   turn = 1;
-   turnCounter.innerHTML = 1;
+   level = 1;
+   displayCounter.innerHTML = 1;
    good = true;
-   
-   console.log('inicia un nuevo juego');
 
-   for (let i = 0; i < numberOfLevels; i++){
+   // for (let i = 0; i < numberOfLevels; i++){
       gameOrder.push(Math.floor(Math.random() * 4 ) + 1);
-   }
+   // }
 
    for (let i = 0; i < 4; i++){
       accion(colors[i]);
@@ -53,11 +52,18 @@ function play(){
 
 function gameTurn(){
    on = false;
-   if (flash === turn) {
+   activePlayer.innerHTML = 'It is computer turn'
+   activePlayer.classList = 'activePlayer activePlayer--show'
+   if (flash === level) {
       clearInterval(intervalId);
       compTurn = false;
       clearColor();
       on = true;
+      if(gameOrder.length <= level){
+         gameOrder.push(Math.floor(Math.random() * 4 ) + 1);
+      }
+      console.log('Next play', gameOrder)
+      activePlayer.innerHTML = `${userName} is your turn`
    }
 
    if(compTurn){
@@ -96,6 +102,14 @@ function flashColor(){
 }
 
 
+function errorSound(){
+   if (noise){
+      let audio = document.getElementById('error');
+      audio.play();
+   }
+   noise = true;
+}
+
 function check(){
 
    if (playerOrder[playerOrder.length -1]  !== gameOrder[playerOrder.length -1]){
@@ -107,13 +121,29 @@ function check(){
    }
 
    if (!good){
+      errorSound();
       flashColor();
-      turnCounter.innerHTML = "NO!";
+      displayCounter.innerHTML = "NO!";
       setTimeout(() => {
-         turnCounter.innerHTML = turn;
+         displayCounter.innerHTML = level;
          clearColor();
+
          if (strict){
+            
+            if(userScores !== null){
+               userScores.push(level-1);
+            } else {
+               userScores = [level-1];
+               scores.classList.add('scores--show');
+            }
+            
+            order(userScores, userName)
+
+            localStorage.setItem(`userScore-${userName}`, JSON.stringify(userScores));
+            localStorage.setItem('bestScore', JSON.stringify(bestScores));
+            
             play();
+
          } else{
             compTurn = true;
             flash = 0;
@@ -126,19 +156,30 @@ function check(){
       noise = false; 
    }
 
-   if(turn === playerOrder.length && good && !win){
-      turn++;
+   if(level === playerOrder.length && good && !win){
+      level++;
       playerOrder = [];
       compTurn = true;
       flash = 0;
-      turnCounter.innerHTML = turn;
+      displayCounter.innerHTML = level;
       intervalId = setInterval(gameTurn, 800);
   }
 }
 
+function order(scores,name){
+   
+   bestScores.push({player:name, score: scores[scores.length - 1]})
+   scores.sort((a,b) => b-a);
+   showUserScores(scores);
+   bestScores.sort((a,b) => b.score - a.score);
+   bestScores = bestScores.slice(0,5);
+   showBestScores(bestScores);
+}
+
+
 function winGame(){
    flashColor();
-   turnCounter.innerHTML = "WIN";
+   displayCounter.innerHTML = "WIN";
    on = false;
    win = true;
    localStorage.setItem(`userScore-${userName}`, 'el score es 121')
@@ -151,10 +192,10 @@ strictBtn.addEventListener('click', (e) => {
 
 onBtn.addEventListener('click', (e) => {
    if (onBtn.checked === true) {
-      turnCounter.innerHTML = '-';
+      displayCounter.innerHTML = '-';
       on = true;
    } else {
-      turnCounter.innerHTML = '';
+      displayCounter.innerHTML = '';
       on = false;
       clearColor();
       clearInterval(intervalId);
@@ -164,7 +205,6 @@ onBtn.addEventListener('click', (e) => {
 startBtn.addEventListener('click', (e) => {
    if (on || win) {
       play();
-
    };
 })
 
