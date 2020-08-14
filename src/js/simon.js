@@ -135,6 +135,7 @@ function check(){
             } else {
                userScores = [level-1];
                scores.classList.add('scores--show');
+               activePlayer.classList.add('activePlayer--show');
             }
             
             order(userScores, userName)
@@ -167,8 +168,13 @@ function check(){
 }
 
 function order(scores,name){
-   
-   bestScores.push({player:name, score: scores[scores.length - 1]})
+   if(bestScores !== null){
+      bestScores.push({player:name, score: scores[scores.length - 1]})
+   } else {
+      bestScores =[{player:name, score: scores[scores.length - 1]}]
+   }
+
+
    scores.sort((a,b) => b-a);
    showUserScores(scores);
    bestScores.sort((a,b) => b.score - a.score);

@@ -69,7 +69,7 @@ function showBestScores(best){
 function showUserScores(user){
    const userTitle = document.getElementById('user-title')
    const userScore = document.getElementById('user-score')
-   userTitle.innerHTML = ` ${userName}'s best scores`;
+   userTitle.innerHTML = ` ${userName} scores`;
    userScore.innerHTML ='';
    for(let i = 0; i < user.length; i++){
       userScore.innerHTML  += `<li> ${i+1} = ${user[i]}</li>`
@@ -81,6 +81,7 @@ btnIntro.addEventListener('click', (e) => {
    
    userName = document.getElementById('user').value.trim();
    const scores = document.getElementById('scores');
+   const activePlayer = document.getElementById('activePlayer');
    const msgErrors = document.getElementById('msg-errors');
 
    bestScores = JSON.parse(localStorage.getItem('bestScore')) || null;
@@ -92,6 +93,7 @@ btnIntro.addEventListener('click', (e) => {
       userScores = JSON.parse(localStorage.getItem(`userScore-${userName}`))|| null;
       if (userScores !== null){
          scores.classList.add('scores--show');
+         activePlayer.classList.add('activePlayer--show');
          showUserScores(userScores);
       }
       intro.classList.remove('intro--show')
