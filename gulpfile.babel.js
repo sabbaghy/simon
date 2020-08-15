@@ -49,7 +49,7 @@ const cssPlugins = [cssnano(), autoprefixer()];
 // Paths
 const paths = {
    root: {
-      www: 'public',
+      www: 'docs',
    },
    src: {
       root:    'src',
@@ -62,14 +62,14 @@ const paths = {
       imgs:    'src/assets/img/**/*.+(png|jpg|gif|svg)',
    },
    dist: {
-      root:    'public',
-      php:     'public/php',
-      pug:     'public',
-      html:    'public',
-      css:     'public/css',
-      js:      'public/js',
-      imgs:    'public/assets/img',
-      vendors: 'public/assets/vendors',
+      root:    'docs',
+      php:     'docs/php',
+      pug:     'docs',
+      html:    'docs',
+      css:     'docs/css',
+      js:      'docs/js',
+      imgs:    'docs/assets/img',
+      vendors: 'docs/assets/vendors',
    },
 };
 
@@ -135,14 +135,14 @@ gulp.task('sassTask', () => {
 
 gulp.task('cleanTask', () => {
   return gulp
-    .src('./public/css/styles.css')
+    .src('./docs/css/styles.css')
     .pipe(plumber())
     .pipe(
       clean({
-        content: ['./public/*.html']
+        content: ['./docs/*.html']
       })
     )
-    .pipe(gulp.dest('./public/css'));
+    .pipe(gulp.dest('./docs/css'));
 });
 
 gulp.task('imgTask', () => {
@@ -168,7 +168,7 @@ gulp.task('imgTask', () => {
 //         outFile: 'using-ts.js'
 //       })
 //     )
-//     .pipe(gulp.dest('public/js'));
+//     .pipe(gulp.dest('docs/js'));
 // });
 
 // delTask 
