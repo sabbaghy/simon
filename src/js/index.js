@@ -1,3 +1,8 @@
+/*-----------------------------------------------------------------------
+   Menu de la aplicacion
+   Control animacion toggle menu
+------------------------------------------------------------------------*/
+
 const mainNav = document.getElementById('nav__links');
 const toggleMenu = document.getElementById('toggle-menu');
 const navList = document.getElementById('nav__list');
@@ -5,9 +10,6 @@ const navItems = document.querySelectorAll('.nav__item');
 const navLenght = navItems.length;
 let menuOpen = false;
 
-/*----------------------------------------------------------------
-   Control animacion toggle menu
-----------------------------------------------------------------*/
 toggleMenu.addEventListener('click', () =>{
    mainNav.classList.toggle('show-menu');
    toggleMenu.classList.toggle('open');
@@ -30,59 +32,3 @@ navItems.forEach(link => {
       }
    })
 });
-
-/* -----------------------------------------------------------------------------------------
-  si pulsa el btn de inicio para comenzar el juego
-------------------------------------------------------------------------------------------*/
-let userName;
-const btnIntro = document.getElementById('btn-intro');
-const intro = document.getElementById('intro');
-
-let userScores =[];
-let bestScores =[];
-
-function showBestScores(best){
-   let i = 1;
-   const bestScore = document.getElementById('best-score')
-   bestScore.innerHTML ='';
-   best.forEach(best => {
-      bestScore.innerHTML  += `<li> ${i}.- ${best.player} ${best.score}</li>`
-      i++;
-      })
-}
-
-function showUserScores(user){
-   const userTitle = document.getElementById('user-title')
-   const userScore = document.getElementById('user-score')
-   userTitle.innerHTML = ` ${userName} scores`;
-   userScore.innerHTML ='';
-   for(let i = 0; i < user.length; i++){
-      userScore.innerHTML  += `<li> ${i+1}.- ${user[i]}</li>`
-   }
-}
-
-btnIntro.addEventListener('click', (e) => {
-   e.preventDefault()
-   
-   userName = document.getElementById('user').value.trim();
-   const scores = document.getElementById('scores');
-   const activePlayer = document.getElementById('activePlayer');
-   const msgErrors = document.getElementById('msg-errors');
-
-   bestScores = JSON.parse(localStorage.getItem('bestScore')) || null;
-   console.log('bestscore= ', bestScores)
-
-   if (userName === 0  || userName === null || userName === '') {
-      msgErrors.innerHTML = ' Enter your name to play';
-   } else{
-      userScores = JSON.parse(localStorage.getItem(`userScore-${userName}`))|| null;
-      if (userScores !== null){
-         scores.classList.add('scores--show');
-         activePlayer.classList.add('activePlayer--show');
-         showUserScores(userScores);
-      }
-      intro.classList.remove('intro--show')
-   }
-
-   if (bestScores !== null) showBestScores(bestScores);
-})
