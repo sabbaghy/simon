@@ -13,17 +13,15 @@
    --cta-clr: #2f5f02;
    --dgr-clr: #b33a46;
 
-   --blueOn: #7baefe;
-   --blueOff: #2659a9;
-   --redOn: #fb7b7b;
-   --redOff: #d62626;
-   --yellowOn: #fff57b;
-   --yellowOff: #eec026;
-   --greenOn: #7bfb99;
-   --greenOff: #26b644;
-
-
-
+   --blue-on: #87cefa;
+   --blue-off: #00008b;
+   --red-on: #ff6347;
+   --red-off: #8b0000;
+   --yellow-on: #ffff00;
+   --yellow-off: #fdbc18;
+   --green-on: #90ee90;
+   --green-off: #006400;
+   --panel: #330000; 
 }
 
    $main-clr: var(--main-clr);
@@ -35,6 +33,15 @@
    $cta-clr: var(--cta-clr);
    $dgr-clr: var(--dgr-clr);
 
+   $blue-on: var(--blue-on);
+   $blue-off: var(--blue-off);
+   $red-on: var(--red-on);
+   $red-off: var(--red-off);
+   $yellow-on: var(--yellow-on);
+   $yellow-off: var(--yellow-off);
+   $green-on: var(--green-on);
+   $green-off: var(--green-off);
+   $panel: var(--panel);
 
 
 /* ===============  Fonts  =============*/
@@ -44,8 +51,7 @@
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:wght@400;700&effect=anaglyph|brick-sign|canvas-print|crackle|decaying|destruction|distressed|distressed-wood|emboss|fire|fire-animation|fragile|grass|ice|mitosis|neon|outline|putting-green|scuffed-steel|shadow-multiple|splintered|static|stonewash|3d|3d-float|vintage|wallpaper");
 
-$ff-title: 'Barlow Condensed', sans-serif; // ==>  para titulos y subtitulos de seccion
-$ff-title: 'Open Sans', cursive, sans-serif; // ==> para el resto de los textos
+$ff-title: 'Open Sans', cursive, sans-serif;// ==>  para titulos y subtitulos de seccion
 $ff-body: 'Open Sans', cursive, sans-serif; // ==> para el resto de los textos
 $fw-reg: 400;
 $fw-bold: 700;

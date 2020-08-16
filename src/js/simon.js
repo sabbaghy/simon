@@ -22,10 +22,10 @@ const strictBtn = document.getElementById('strict-btn');
 const activePlayer = document.getElementById('activePlayer');
 
 const colors = [
-   {pad: green, normal: 'darkgreen', press: 'lightgreen', clip: 'green-sound'},
-   {pad: red, normal: 'darkred', press: 'tomato', clip: 'red-sound'},
-   {pad: gold, normal: 'goldenrod', press: 'yellow', clip: 'gold-sound'},
-   {pad: blue, normal: 'darkblue', press: 'lightskyblue', clip: 'blue-sound'},
+   {pad: green, normal: 'green', press: 'green--on', clip: 'green-sound'},
+   {pad: red, normal: 'red', press: 'red--on', clip: 'red-sound'},
+   {pad: gold, normal: 'gold', press: 'gold--on', clip: 'gold-sound'},
+   {pad: blue, normal: 'blue', press: 'blue--on', clip: 'blue-sound'},
 ]
 
 function play(){
@@ -38,12 +38,10 @@ function play(){
    displayCounter.innerHTML = 1;
    good = true;
 
-   // for (let i = 0; i < numberOfLevels; i++){
-      gameOrder.push(Math.floor(Math.random() * 4 ) + 1);
-   // }
+   gameOrder.push(Math.floor(Math.random() * 4 ) + 1);
 
    for (let i = 0; i < 4; i++){
-      accion(colors[i]);
+      action(colors[i]);
    }
 
    compTurn = true;
@@ -62,43 +60,41 @@ function gameTurn(){
       if(gameOrder.length <= level){
          gameOrder.push(Math.floor(Math.random() * 4 ) + 1);
       }
-      console.log('Next play', gameOrder)
+      console.log('Next play', gameOrder)  // ==> facilitar la prueba del juego y no tener que recordar las secuencia
       activePlayer.innerHTML = `${userName} is your turn`
    }
 
    if(compTurn){
       clearColor();
       setTimeout(() => {
-         if(gameOrder[flash] === 1) accion(colors[0]);
-         if(gameOrder[flash] === 2) accion(colors[1]);
-         if(gameOrder[flash] === 3) accion(colors[2]);
-         if(gameOrder[flash] === 4) accion(colors[3]);
+         if(gameOrder[flash] === 1) action(colors[0]);
+         if(gameOrder[flash] === 2) action(colors[1]);
+         if(gameOrder[flash] === 3) action(colors[2]);
+         if(gameOrder[flash] === 4) action(colors[3]);
          flash++;
       },200)
    }
 }
 
-function accion(colors){
+function action(colors){
    if (noise){
       let audio = document.getElementById(colors.clip);
       audio.play();
    }
    noise = true;
-   colors.pad.style.background = colors.press;
+   colors.pad.classList.add(`${colors.press}`);
 }
 
 function clearColor(){
-   green.style.background = "darkgreen";
-   red.style.background = "darkred";
-   gold.style.background = "goldenrod";
-   blue.style.background = "darkblue";
+   for (let i = 0; i < colors.length; i++){
+      colors[i].pad.classList.remove(`${colors[i].press}`);
+   }
 }
 
 function flashColor(){
-   green.style.background = "lightgreen";
-   red.style.background = "tomato";
-   gold.style.background = "yellow";
-   blue.style.background = "lightskyblue";
+   for (let i = 0; i < colors.length; i++){
+      colors[i].pad.classList.add(`${colors[i].press}`);
+   }
 }
 
 
@@ -168,32 +164,32 @@ function check(){
 }
 
 function order(scores,name){
+   let max;
    if(bestScores !== null){
       bestScores.push({player:name, score: scores[scores.length - 1]})
    } else {
       bestScores =[{player:name, score: scores[scores.length - 1]}]
    }
 
-
    scores.sort((a,b) => b-a);
+   max = Math.min(10,scores.length)
+   scores = scores.slice(0,max);
    showUserScores(scores);
    bestScores.sort((a,b) => b.score - a.score);
-   bestScores = bestScores.slice(0,5);
+   max = Math.min(10,bestScores.length)
+   bestScores = bestScores.slice(0,max);
    showBestScores(bestScores);
 }
-
 
 function winGame(){
    flashColor();
    displayCounter.innerHTML = "WIN";
    on = false;
    win = true;
-   localStorage.setItem(`userScore-${userName}`, 'el score es 121')
 }
 
 strictBtn.addEventListener('click', (e) => {
    strict = strictBtn.checked ? true : false;
-   console.log('el boton strict = ', strict)
 })
 
 onBtn.addEventListener('click', (e) => {
@@ -218,7 +214,7 @@ green.addEventListener('click', (e) => {
    if(on){
       playerOrder.push(1);
       check()
-      accion(colors[0])
+      action(colors[0])
       if(!win){
          setTimeout(() => {
             clearColor();
@@ -231,7 +227,7 @@ red.addEventListener('click', (e) => {
    if(on){
       playerOrder.push(2);
       check()
-      accion(colors[1]);
+      action(colors[1]);
       if(!win){
          setTimeout(() => {
             clearColor();
@@ -244,7 +240,7 @@ gold.addEventListener('click', (e) => {
    if(on){
       playerOrder.push(3);
       check()
-      accion(colors[2]);
+      action(colors[2]);
       if(!win){
          setTimeout(() => {
             clearColor();
@@ -257,7 +253,7 @@ blue.addEventListener('click', (e) => {
    if(on){
       playerOrder.push(4);
       check()
-      accion(colors[3]);
+      action(colors[3]);
       if(!win){
          setTimeout(() => {
             clearColor();

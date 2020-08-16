@@ -40,30 +40,15 @@ const intro = document.getElementById('intro');
 
 let userScores =[];
 let bestScores =[];
-/* 
-bestScores = [
-   {player: 'pepe', score: 100},
-   {player: 'paco', score: 70},
-   {player: 'juan', score: 50},
-   {player: 'luis', score: 40},
-]
-
-const userScorePepe = [100, 19, 10, 5, 3, 2];
-const userScorePaco = [70, 15, 10, 5]; 
-const userScoreMaria = [20, 10]; 
-
-
-localStorage.setItem('bestScore', JSON.stringify(bestScores));
-localStorage.setItem('userScore-Pepe', JSON.stringify(userScorePepe));
-localStorage.setItem('userScore-Paco', JSON.stringify(userScorePaco));
-localStorage.setItem('userScore-Maria', JSON.stringify(userScoreMaria));
-*/
-
 
 function showBestScores(best){
+   let i = 1;
    const bestScore = document.getElementById('best-score')
    bestScore.innerHTML ='';
-   best.forEach(best => {bestScore.innerHTML  += `<li> ${best.player} - ${best.score}</li>`})
+   best.forEach(best => {
+      bestScore.innerHTML  += `<li> ${i}.- ${best.player} ${best.score}</li>`
+      i++;
+      })
 }
 
 function showUserScores(user){
@@ -72,7 +57,7 @@ function showUserScores(user){
    userTitle.innerHTML = ` ${userName} scores`;
    userScore.innerHTML ='';
    for(let i = 0; i < user.length; i++){
-      userScore.innerHTML  += `<li> ${i+1} = ${user[i]}</li>`
+      userScore.innerHTML  += `<li> ${i+1}.- ${user[i]}</li>`
    }
 }
 

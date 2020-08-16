@@ -10,9 +10,9 @@
    position: absolute;
    width: 100%;
    text-align: center;
-   color: red;
+   color: $txt-clr-dark;
    font-weight: bold;
-   font-family: courier;
+   font-family: $ff-title;
    font-size: 3em;
    top: 30px;
    transform: scale(0);
@@ -26,7 +26,7 @@
 .scores{
    width: 80%;
    margin: 20px auto;
-   font-size: 1rem  ;
+   font-size: 1.1rem  ;
    display: flex;
    justify-content: space-between;
    color: red;
@@ -53,20 +53,14 @@
 .best {
    width: 180px;
    padding: 1rem;
-   background: #330000; 
+   background: $panel; 
    border-radius: 5px;
-   box-shadow:
-      0 0 0 2px darkgreen,
-      0 0 0 4px #fff,
-      0 0 0 6px darkred,
-      0 0 0 8px #fff,
-      0 0 0 10px goldenrod,
-      0 0 0 12px #fff,
-      0 0 0 14px darkblue;
+   box-shadow: 0 0 0 2px $txt-clr-dark;
    text-align: center;
    &-title{
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: bold;
+      text-transform: uppercase;
    }
 }
 
@@ -122,7 +116,7 @@
    display: flex;
    align-items: center;
    justify-content: center;
-   background: #330000; 
+   background: $panel;
    color: red;
    font-family: courier;
    font-size: 2em;
@@ -182,8 +176,12 @@
 
 .green {
    border-radius: 100% 0 0 0;
-   background: darkgreen;
+   background: $green-off;
    margin: -40vw 0 0 -40vw;
+
+   &--on{
+      background: $green-on;
+   }
    
    @include table {
       margin: -30vw 0 0 -30vw;
@@ -196,8 +194,12 @@
 
 .red {
    border-radius: 0 100% 0 0;
-   background: darkred;
+   background: $red-off;
    margin: -40vw 0 0 0;
+
+&--on{
+      background: $red-on;
+   }
 
    @include table {
       margin: -30vw 0 0 0;
@@ -210,9 +212,14 @@
 
 .gold {
    border-radius: 0 0 0 100%;
+   background: $yellow-off;
    background: goldenrod;
    margin: 0 -40vw 0 -40vw;
 
+&--on{
+      background: $yellow-on;
+   }
+   
    @include table {
       margin: 0 -30vw 0 -30vw;
    }
@@ -225,9 +232,13 @@
 
 .blue {
    border-radius: 0 0 100% 0;
-   background: darkblue;
+   background: $blue-off;
    margin: 0 0 -40vw 0;
 
+&--on{
+      background: $blue-on;
+   }
+   
    @include table {
       margin: 0 0 -40vw 0;
    }
