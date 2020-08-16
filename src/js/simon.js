@@ -38,7 +38,7 @@ function play(){
    displayCounter.innerHTML = 1;
    good = true;
 
-   gameOrder.push(Math.floor(Math.random() * 4 ) + 1);
+   gameOrder.push(Math.floor(Math.random() * 4 ));
 
    for (let i = 0; i < 4; i++){
       action(colors[i]);
@@ -58,7 +58,7 @@ function gameTurn(){
       clearColor();
       on = true;
       if(gameOrder.length <= level){
-         gameOrder.push(Math.floor(Math.random() * 4 ) + 1);
+         gameOrder.push(Math.floor(Math.random() * 4 ));
       }
       console.log('Next play', gameOrder)  // ==> facilitar la prueba del juego y no tener que recordar las secuencia
       activePlayer.innerHTML = `${userName} is your turn`
@@ -67,10 +67,10 @@ function gameTurn(){
    if(compTurn){
       clearColor();
       setTimeout(() => {
-         if(gameOrder[flash] === 1) action(colors[0]);
-         if(gameOrder[flash] === 2) action(colors[1]);
-         if(gameOrder[flash] === 3) action(colors[2]);
-         if(gameOrder[flash] === 4) action(colors[3]);
+         if(gameOrder[flash] === 0) action(colors[0]);
+         if(gameOrder[flash] === 1) action(colors[1]);
+         if(gameOrder[flash] === 2) action(colors[2]);
+         if(gameOrder[flash] === 3) action(colors[3]);
          flash++;
       },200)
    }
@@ -211,53 +211,30 @@ startBtn.addEventListener('click', (e) => {
 })
 
 green.addEventListener('click', (e) => {
-   if(on){
-      playerOrder.push(1);
-      check()
-      action(colors[0])
-      if(!win){
-         setTimeout(() => {
-            clearColor();
-         },300)
-      }
-   }
+   buttonPush(0);
 })
 
 red.addEventListener('click', (e) => {
-   if(on){
-      playerOrder.push(2);
-      check()
-      action(colors[1]);
-      if(!win){
-         setTimeout(() => {
-            clearColor();
-         },300)
-      }
-   }
+   buttonPush(1);
 })
 
 gold.addEventListener('click', (e) => {
-   if(on){
-      playerOrder.push(3);
-      check()
-      action(colors[2]);
-      if(!win){
-         setTimeout(() => {
-            clearColor();
-         },300)
-      }      
-   }
+   buttonPush(2);
 })
 
 blue.addEventListener('click', (e) => {
+   buttonPush(3);
+})
+
+function buttonPush(buttonNumber) {
    if(on){
-      playerOrder.push(4);
+      playerOrder.push(buttonNumber);
       check()
-      action(colors[3]);
+      action(colors[buttonNumber]);
       if(!win){
          setTimeout(() => {
             clearColor();
          },300)
       }
    }
-})
+}  
