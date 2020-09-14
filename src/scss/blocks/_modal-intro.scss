@@ -30,6 +30,7 @@
 
 .form-data{
    display: flex;
+   flex-direction: column;
    justify-content: center;
    align-items: center;
 }
@@ -48,17 +49,18 @@
 }
 
 .user{
-   width: 100%;
+   width: fit-content;
    height: 1.5rem;
    background: $txt-clr-light;
    outline: none;
    border: none;
+   margin-left: .3rem;
 }
 
 .btn--intro{
    background: darkgreen;
    border: darkgreen;
-   
+   margin-top: 1rem;
    &:hover{
       background: lightgreen;
       color: darkgreen;
