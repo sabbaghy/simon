@@ -16,6 +16,7 @@ let userName;
 const numberOfLevels = 100;
 
 const displayCounter = document.getElementById('level');
+const pads = document.getElementById('pads');
 const green = document.getElementById('green');
 const red = document.getElementById('red');
 const gold = document.getElementById('gold');
@@ -307,24 +308,24 @@ startBtn.addEventListener('click', (e) => {
    };
 })
 
-// si se pulsa el panel verde (green = 0)
-green.addEventListener('click', (e) => {
-   buttonPush(0);
-})
-
-// si se pulsa el panel rojo (red = 1)
-red.addEventListener('click', (e) => {
-   buttonPush(1);
-})
-
-// si se pulsa el panel amarillo (gold = 2)
-gold.addEventListener('click', (e) => {
-   buttonPush(2);
-})
-
-// si se pulsa el panel verde (blue = 3)
-blue.addEventListener('click', (e) => {
-   buttonPush(3);
+// si se pulsa algun panel del juego
+pads.addEventListener('click', (e) => {
+   switch (e.target.id) {
+      case 'green':
+         buttonPush(0);
+         break;
+      case 'red':
+         buttonPush(1);
+         break;
+      case 'gold':
+         buttonPush(2);
+         break;
+      case 'blue':
+         buttonPush(3);
+         break;
+      default:
+         break;
+   }
 })
 
 /*----------------------------------------------------------------------------------------
